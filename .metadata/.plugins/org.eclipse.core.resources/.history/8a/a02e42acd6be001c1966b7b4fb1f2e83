@@ -1,0 +1,12 @@
+package com.zensar.bean;
+
+public class Student {
+	int rollNo;
+	String name;
+
+	@Override
+	public String toString() {
+		return "Student [rollNo=" + rollNo + ", name=" + name + "]";
+	}
+
+}

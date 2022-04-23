@@ -1,0 +1,5 @@
+package com.zensar.olx.masterdata.service;
+
+public class AdvertisementStatusService {
+
+}

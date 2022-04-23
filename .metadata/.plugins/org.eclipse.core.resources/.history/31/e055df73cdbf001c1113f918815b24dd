@@ -1,0 +1,6 @@
+package com.zensar.olx.users.bean;
+
+public class OlxUser {
+private String userName;
+private 
+}

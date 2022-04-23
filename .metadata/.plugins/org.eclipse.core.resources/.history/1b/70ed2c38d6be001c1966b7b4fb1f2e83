@@ -1,0 +1,15 @@
+package com.zensar.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.zensar.bean.Circle;
+
+@Configuration
+public class MyConfig {
+	@Bean(name = "cbean")
+	public Circle f1() {
+		return new Circle();
+
+	}
+}

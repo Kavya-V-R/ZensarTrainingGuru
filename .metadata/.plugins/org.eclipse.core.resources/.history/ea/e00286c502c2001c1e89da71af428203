@@ -1,0 +1,10 @@
+package com.zensar.bean;
+
+public class Address {
+
+	int addressId;
+	String cityName;
+	String pincode;
+	
+	Employee employee;
+}

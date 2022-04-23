@@ -1,0 +1,109 @@
+package com.zensar.olx.advertises.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.zensar.olx.advertises.bean.Advertisement;
+import com.zensar.olx.advertises.bean.AdvertisementPostRequest;
+import com.zensar.olx.advertises.bean.AdvertisementPostResponse;
+import com.zensar.olx.advertises.bean.AdvertisementStatus;
+import com.zensar.olx.advertises.bean.Category;
+import com.zensar.olx.advertises.bean.OlxUser;
+import com.zensar.olx.advertises.service.AdvertisementPostService;
+
+@RestController
+public class AdvertisementController {
+
+	@Autowired
+	AdvertisementPostService service;
+
+	@PostMapping("/advertise/{un}")
+	public AdvertisementPostResponse add(@RequestBody AdvertisementPostRequest request,
+			@PathVariable(name = "un") String userName) {
+		Advertisement advt = new Advertisement();
+		advt.setTitle(request.getTitle());
+		advt.setPrice(request.getPrice());
+		advt.setDescription(request.getDescription());
+
+		int categoryId = request.getCategoryId();
+
+		RestTemplate restTemplate = new RestTemplate();
+		Category category;
+		String url = "http://localhost:9052/advertise/getCategoryById/" + categoryId;
+		category = restTemplate.getForObject(url, Category.class);
+		advt.setCategory(category);
+
+		url = "http://localhost:9051/findUserByName/" + userName;
+		OlxUser olxUser = restTemplate.getForObject(url, OlxUser.class);
+		advt.setOlxUser(olxUser);
+
+		AdvertisementStatus advertisementStatus = new AdvertisementStatus(1, "OPEN");
+		advt.setAdvertisementStatus(advertisementStatus);
+
+		Advertisement advertisement = this.service.addAdvertisement(advt);
+
+		AdvertisementPostResponse response = new AdvertisementPostResponse();
+		response.setId(advertisement.getId());
+		response.setTitle(advertisement.getTitle());
+		response.setPrice(advertisement.getPrice());
+		response.setCategory(advertisement.getCategory().getName());
+		response.setDescription(advertisement.getDescription());
+		response.setUserName(advertisement.getOlxUser().getUserName());
+		response.setCreatedDate(advertisement.getCreatedDate());
+		response.setModifiedDate(advertisement.getModifiedDate());
+		response.setStatus(advertisement.getAdvertisementStatus().getStatus());
+
+		return response;
+	}
+
+	@PutMapping("/advertise/{aid}/{userName}")
+	private AdvertisementPostResponse f2(@RequestBody AdvertisementPostRequest request,
+
+			@PathVariable(name = "aid") int id, @PathVariable(name = "userName") String userName) {
+		Advertisement advt = this.service.getAdvertisementById(id);
+
+		advt.setTitle(request.getTitle());
+		advt.setDescription(request.getDescription());
+		advt.setPrice(request.getPrice());
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		Category category;
+		String url = "http://localhost:9052/advertise/getCategoryById/" + request.getCategoryId();
+		category = restTemplate.getForObject(url, Category.class);
+		advt.setCategory(category);
+
+		url = "http://localhost:9051/findUserByName/" + userName;
+		OlxUser olxUser = restTemplate.getForObject(url, OlxUser.class);
+		advt.setOlxUser(olxUser);
+
+		url = "http://localhost:9052/advertise/status/" + request.getStatusId();
+		AdvertisementStatus advertisementStatus;
+		advertisementStatus = restTemplate.getForObject(url, AdvertisementStatus.class);
+		advt.setAdvertisementStatus(advertisementStatus);
+
+		Advertisement advertisement = this.service.updateAdvertisement(advt);
+
+		AdvertisementPostResponse postResponse;
+		postResponse = new AdvertisementPostResponse();
+
+		postResponse.setId(advertisement.getId());
+		postResponse.setCategory(advertisement.getTitle());
+		postResponse.setDescription(advertisement.getDescription());
+		postResponse.setPrice(advertisement.getPrice());
+		postResponse.setUserName(advertisement.getOlxUser().getUserName());
+		postResponse.setCategory(advertisement.getCategory().getName());
+		postResponse.setCreatedDate(advertisement.getCreatedDate());
+		postResponse.setModifiedDate(advertisement.getModifiedDate());
+		postResponse.setStatus(advertisement.getAdvertisementStatus().getStatus());
+
+		return postResponse;
+
+	}
+
+}

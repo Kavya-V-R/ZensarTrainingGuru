@@ -1,0 +1,5 @@
+package com.zensar.olx.advertises.db;
+
+public interface AdvertisementDAO {
+
+}

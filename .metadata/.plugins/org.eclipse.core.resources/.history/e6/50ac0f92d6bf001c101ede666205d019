@@ -1,0 +1,5 @@
+package com.zensar.olx.users.db;
+
+public interface OlxUserDAO {
+
+}

@@ -1,0 +1,15 @@
+package com.zensar.bean;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Student {
+	int rollNo=102;
+	String name="kavya";
+
+	@Override
+	public String toString() {
+		return "Student [rollNo=" + rollNo + ", name=" + name + "]";
+	}
+
+}

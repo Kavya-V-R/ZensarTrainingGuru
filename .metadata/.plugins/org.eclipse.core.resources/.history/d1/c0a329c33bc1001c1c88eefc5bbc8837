@@ -1,0 +1,42 @@
+package com.zensar.olx.advertises.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.zensar.olx.advertises.bean.Advertisement;
+import com.zensar.olx.advertises.bean.AdvertisementPostRequest;
+import com.zensar.olx.advertises.bean.AdvertisementPostResponse;
+import com.zensar.olx.advertises.bean.Category;
+import com.zensar.olx.advertises.service.AdvertisementPostService;
+
+@RestController
+public class AdvertisementController {
+
+	@Autowired
+	AdvertisementPostService service;
+
+	@PostMapping("/advertise/{un}")
+	public AdvertisementPostResponse add(@RequestBody AdvertisementPostRequest request,
+			@PathVariable(name = "un") String userName) {
+		Advertisement advertisement = new Advertisement();
+		advertisement.setTitle(request.getTitle());
+		advertisement.setPrice(request.getPrice());
+		advertisement.setDescription(request.getDescription());
+
+		int categoryId = request.getCategoryId();
+
+		RestTemplate restTemplate = new RestTemplate();
+		Category category;
+		String url = "http://localhost9052/advertise/getCategory/" + categoryId;
+		category = restTemplate.getForObject(url, Category.class);
+		advertisement.setCategory(category);
+
+		return null;
+
+	}
+
+}

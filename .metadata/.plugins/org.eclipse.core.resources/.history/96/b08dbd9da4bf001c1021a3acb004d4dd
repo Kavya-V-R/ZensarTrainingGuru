@@ -1,0 +1,27 @@
+package com.zensar.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zensar.bean.Employee;
+import com.zensar.db.EmployeeDAO;
+
+@Service
+public class EmployeeService {
+
+	@Autowired
+	EmployeeDAO dao;
+
+	public Employee addEmployee(Employee employee) {
+		return dao.save(employee);
+	}
+
+	public Employee findEmployee(int id) {
+		Optional<Employee> optional = dao.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		return null;
+	}
+}

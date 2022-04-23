@@ -1,0 +1,5 @@
+package com.zensar.olx.masterdata.rest;
+
+public class AdvertisementStatusController {
+
+}

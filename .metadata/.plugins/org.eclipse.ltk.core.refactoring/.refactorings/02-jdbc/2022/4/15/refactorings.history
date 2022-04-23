@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.zensar.ui.Main&apos; to &apos;Main1&apos;&#x0D;&#x0A;- Original project: &apos;02-jdbc&apos;&#x0D;&#x0A;- Original element: &apos;com.zensar.ui.Main&apos;&#x0D;&#x0A;- Renamed element: &apos;com.zensar.ui.Main1&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Main&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.zensar.ui{Main.java[Main" matchStrategy="1" name="Main1" qualified="false" references="true" similarDeclarations="false" stamp="1649392344829" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,19 @@
+package com.zensar.olx.users.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zensar.olx.users.bean.OlxUser;
+import com.zensar.olx.users.db.OlxUserDAO;
+
+@Service
+public class OlxUserService {
+
+	@Autowired
+	OlxUserDAO dao;
+
+	public OlxUser addOlxUser(OlxUser olxUser) {
+		return this.dao.save(olxUser);
+
+	}
+}

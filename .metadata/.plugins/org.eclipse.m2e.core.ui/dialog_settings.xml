@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="D:\Zensar-Guru\27-OLX_Advertises\src\main\java\com\zensar\olx\advertises\rest\AdvertisementController.java"/>
+			<item value="D:\Zensar-Guru\14-MavenProject1\pom.xml"/>
+			<item value="D:\Zensar-Guru\13-JPAEmbedding"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.zensar"/>
+			<item value="com.zensar._SpringMaven"/>
+			<item value="com.zensar._JPQC"/>
+			<item value="com.zensar._OneTOManyER"/>
+		</list>
+		<list key="groupId">
+			<item value="com.zensar"/>
+		</list>
+		<list key="artifactId">
+			<item value="HibernateCodingTest"/>
+			<item value="22-SpringMaven"/>
+			<item value="17-SpringMaven"/>
+			<item value="20-JPQC"/>
+			<item value="20-JPQL"/>
+			<item value="19-EntityAssociation"/>
+			<item value="19-OneTOManyER"/>
+			<item value="19-EntityRelationship"/>
+			<item value="18-EntityRelationship"/>
+			<item value="17-EntityRelationship"/>
+			<item value="16-EntityRelationship"/>
+			<item value="15-MavenProject"/>
+			<item value="14-MavenProject1"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="C:\Users\KV66481\Downloads\26-SpringBoot"/>
+			<item value="D:\Zensar-Guru\23-SpringBoot"/>
+			<item value="C:\Users\KV66481\Downloads\25-SpringBoot"/>
+			<item value="C:\Users\KV66481\Downloads\25-SpringBoot\25-SpringBoot"/>
+			<item value="C:\Users\KV66481\Downloads\24-SpringBoot"/>
+			<item value="C:\Users\KV66481\Downloads\22-SpringBoot"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

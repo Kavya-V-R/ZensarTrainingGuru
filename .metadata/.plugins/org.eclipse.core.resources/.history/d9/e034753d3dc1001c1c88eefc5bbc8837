@@ -1,0 +1,50 @@
+package com.zensar.olx.advertises.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.zensar.olx.advertises.bean.Advertisement;
+import com.zensar.olx.advertises.bean.AdvertisementPostRequest;
+import com.zensar.olx.advertises.bean.AdvertisementPostResponse;
+import com.zensar.olx.advertises.bean.AdvertisementStatus;
+import com.zensar.olx.advertises.bean.Category;
+import com.zensar.olx.advertises.bean.OlxUser;
+import com.zensar.olx.advertises.service.AdvertisementPostService;
+
+@RestController
+public class AdvertisementController {
+
+	@Autowired
+	AdvertisementPostService service;
+
+	@PostMapping("/advertise/{un}")
+	public AdvertisementPostResponse add(@RequestBody AdvertisementPostRequest request,
+			@PathVariable(name = "un") String userName) {
+		Advertisement advertisement = new Advertisement();
+		advertisement.setTitle(request.getTitle());
+		advertisement.setPrice(request.getPrice());
+		advertisement.setDescription(request.getDescription());
+
+		int categoryId = request.getCategoryId();
+
+		RestTemplate restTemplate = new RestTemplate();
+		Category category;
+		String url = "http://localhost9052/advertise/getCategoryById/" + categoryId;
+		category = restTemplate.getForObject(url, Category.class);
+		advertisement.setCategory(category);
+
+		url = "http://localhost9051/findUserByName/" + userName;
+		OlxUser olxUser = restTemplate.getForObject(url, OlxUser.class);
+		advertisement.setOlxUser(olxUser);
+
+		AdvertisementStatus advertisementStatus = new AdvertisementStatus(1, "OPEN");
+
+		return null;
+
+	}
+
+}
